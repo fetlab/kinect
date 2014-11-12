@@ -49,8 +49,10 @@ class Kinect(object):
     else:
       try:
         self.depth_func = user_code.depth_func
+        self.rgb_func   = user_code.rgb_func
       except AttributeError:
-        sys.stderr.write("ERROR: Module at %s must have a depth_func() function!" % fname)
+        sys.stderr.write(("ERROR: Module at %s must have depth_func() "
+            "and rgb_func() functions!") % fname)
 
 
   def process_keys(self):
@@ -70,6 +72,7 @@ class Kinect(object):
       d = self.depth_func(data, self.module_key)
       self.module_key = ''
     except Exception, e:
+      print "Exception: %s" % e
       cv2.imshow('Depth', data)
     else:
       cv2.imshow('Depth', d)
@@ -77,7 +80,13 @@ class Kinect(object):
 
 
   def display_rgb(self, dev, data, timestamp):
-    cv2.imshow('RGB', cv2.cvtColor(data, cv2.cv.CV_BGR2RGB))
+    data = cv2.cvtColor(data, cv2.cv.CV_BGR2RGB)
+    try:
+      d = self.rgb_func(data)
+    except Exception, e:
+      cv2.imshow('RGB', data)
+    else:
+      cv2.imshow('RGB', d)
     self.process_keys()
 
 
