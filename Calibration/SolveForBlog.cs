@@ -14,11 +14,22 @@ namespace KinectCalibration
         GeneralMatrix rightSideMatrix;
         GeneralMatrix result;
 
-        public static sealed int MininumPoints = 8;
+        public static int MininumPoints = 8;
 
         public static void main(String[] args)
         {
+            ArrayList kinectCoordinates = new ArrayList();
+            ArrayList projectorCoordinates = new ArrayList();
 
+            SolveForBlog solver = new SolveForBlog();
+            solver.FindTransformation(kinectCoordinates, projectorCoordinates);
+
+            Point3D testKinectCoord = new Point3D();
+            testKinectCoord.X = 1;
+            testKinectCoord.Y = 2;
+            testKinectCoord.Z = 3;
+
+            Point2D result = solver.convertKinectToProjector(testKinectCoord);
         }
 
         public void FindTransformation(ArrayList kinectCoors, ArrayList projectorCoors)
