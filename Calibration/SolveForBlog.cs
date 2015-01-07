@@ -1,4 +1,5 @@
 ﻿using MathNet.Numerics.LinearAlgebra.Double;
+using MathNet.Numerics.LinearAlgebra;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,25 +21,30 @@ namespace KinectCalibration
         {
             ArrayList kinectCoordinates = new ArrayList();
             ArrayList projectorCoordinates = new ArrayList();
-
-            for (int i = 0; i < 80; i++)
+            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Carlos Tejada\Documents\Visual Studio 2013\Projects\KinectCalibration\kinectCoordenates.txt");
+            foreach (String line in lines)
             {
-                Random rn = new Random();
+                string[] kinectCoordinate = line.Split(',');
                 Point3D point3D = new Point3D()
                 {
-                    X = rn.Next(7 - 2 + 1) + 2,
-                    Y = rn.Next(7 - 2 + 1) + 2,
-                    Z = rn.Next(7 - 2 + 1) + 2
+                    X = Double.Parse(kinectCoordinate[0]),
+                    Y = Double.Parse(kinectCoordinate[1]),
+                    Z = Double.Parse(kinectCoordinate[2])
                 };
                 kinectCoordinates.Add(point3D);
+            }
+
+            lines = System.IO.File.ReadAllLines(@"C:\Users\Carlos Tejada\Documents\Visual Studio 2013\Projects\KinectCalibration\projectorCoordinates.txt");
+            foreach (String line in lines)
+            {
+                string[] projectorCoordinate = line.Split(new Char[] { ',', ' ' });
                 Point2D point2D = new Point2D()
                 {
-                    X = rn.Next(7 - 2 + 1) + 2,
-                    Y = rn.Next(7 - 2 + 1) + 2
+                    X = double.Parse(projectorCoordinate[0]),
+                    Y = double.Parse(projectorCoordinate[1]),
                 };
                 projectorCoordinates.Add(point2D);
             }
-
             SolveForBlog solver = new SolveForBlog();
             solver.FindTransformation(kinectCoordinates, projectorCoordinates);
 
@@ -48,27 +54,36 @@ namespace KinectCalibration
             testKinectCoord.Z = 3;
 
             Point2D result = solver.convertKinectToProjector(testKinectCoord);
+            Console.Out.WriteLine(result.X + "," + result.Y);
+            Console.ReadKey();
         }
 
         public void FindTransformation(ArrayList kinectCoors, ArrayList projectorCoors)
         {
             PrepareMatrices(kinectCoors, projectorCoors);
             DenseMatrix problem = foundCoordinatesMatrix;
-            result = (DenseMatrix) problem.Solve(rightSideMatrix);
+            result = (DenseMatrix) problem.QR().Solve(rightSideMatrix);
+            Console.Out.WriteLine(result);
         }
 
         private void PrepareMatrices(ArrayList kinectCoors, ArrayList projectorCoors)
         {
             foundCoordinatesMatrix = new DenseMatrix(projectorCoors.Count * 2, 11);
-            rightSideMatrix = new DenseMatrix(projectorCoors.Count, 1);
+            rightSideMatrix = new DenseMatrix(projectorCoors.Count * 2, 1);
             for (int i = 0; i < projectorCoors.Count; i = i + 2)
             {
                 Point3D kc = (Point3D) kinectCoors[i / 2];
                 Point2D projC = (Point2D) projectorCoors[i / 2];
                 double[] valueArray = new double[] {kc.X, kc.Y, kc.Z, 1, 0, 0, 0, 0, -projC.X * kc.X, -projC.X * kc.Y, -projC.X * kc.Z};
-                foundCoordinatesMatrix.SetColumn(i, valueArray);
-                valueArray = new double[] {0, 0, 0, 0, kc.X, kc.Y, kc.Z, 1, -projC.Y * kc.X, -projC.Y * kc.Y, -projC.Y * kc.Z, projC.Y};
-                foundCoordinatesMatrix.SetColumn(i + 1, valueArray);
+                Vector<double> values = Vector<double>.Build.Dense(valueArray);
+                foundCoordinatesMatrix.SetRow(i, values);
+                Vector<double> rightSide = Vector<double>.Build.Dense(1, projC.X);
+                rightSideMatrix.SetRow(i, rightSide);
+                valueArray = new double[] {0, 0, 0, 0, kc.X, kc.Y, kc.Z, 1, -projC.Y * kc.X, -projC.Y * kc.Y, -projC.Y * kc.Z};
+                values = Vector<double>.Build.Dense(valueArray);
+                foundCoordinatesMatrix.SetRow(i + 1, values);
+                rightSide = Vector<double>.Build.Dense(1, projC.Y);
+                rightSideMatrix.SetRow(i + 1, rightSide);
             }
         }
 
@@ -89,38 +104,19 @@ namespace KinectCalibration
         public class Point3D
         {
 
-            public double X
-            {
-                get { return this.X;}
-                set { this.X = value; }
-            }
-            
-            public double Y
-            {
-                get { return this.Y; }
-                set { this.Y = value; }
-            }
-            
-            public double Z
-            {
-                get { return this.Z; }
-                set { this.Z = value; }
-            }
+            public double X;
+
+            public double Y;
+
+            public double Z;
         }
 
         public class Point2D
         {
-            public double X
-            {
-                get { return this.X; }
-                set { this.X = value; }
-            }
+            public double X;
 
-            public double Y
-            {
-                get { return this.Y; }
-                set { this.Y = value; }
-            }
+            public double Y;
+
         }
     }
 }
