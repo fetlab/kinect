@@ -1,0 +1,10 @@
+﻿<Window x:Class="C_sharp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Kinect Object Tracking" Height="350" Width="525">
+    <Grid>
+        <Button x:Name="Button1" Content="Starting Tracking&#xD;&#xA;" HorizontalAlignment="Left" Margin="20,21,0,0" VerticalAlignment="Top" Width="101" Click="Button_Click" Height="26" MouseDoubleClick= "Button_MouseDoubleClick"/>
+        <TextBox x:Name="Text1" HorizontalAlignment="Left" Height="37" Margin="195,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="298"/>
+
+    </Grid>
+</Window>

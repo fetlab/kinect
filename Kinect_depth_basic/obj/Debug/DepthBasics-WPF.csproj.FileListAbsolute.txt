@@ -1,0 +1,30 @@
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\Digital Fabrication\DepthBasics-WPF\bin\AnyCPU\Debug\DepthBasics-WPF.exe.config
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\Digital Fabrication\DepthBasics-WPF\bin\AnyCPU\Debug\DepthBasics-WPF.exe
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\Digital Fabrication\DepthBasics-WPF\bin\AnyCPU\Debug\DepthBasics-WPF.pdb
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\Digital Fabrication\DepthBasics-WPF\bin\AnyCPU\Debug\Microsoft.Kinect.dll
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\Digital Fabrication\DepthBasics-WPF\bin\AnyCPU\Debug\Microsoft.Kinect.xml
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\Digital Fabrication\DepthBasics-WPF\obj\Debug\DepthBasics-WPF.csprojResolveAssemblyReference.cache
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\Digital Fabrication\DepthBasics-WPF\obj\Debug\MainWindow.baml
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\Digital Fabrication\DepthBasics-WPF\obj\Debug\MainWindow.g.cs
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\Digital Fabrication\DepthBasics-WPF\obj\Debug\App.g.cs
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\Digital Fabrication\DepthBasics-WPF\obj\Debug\DepthBasics-WPF_MarkupCompile.cache
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\Digital Fabrication\DepthBasics-WPF\obj\Debug\DepthBasics-WPF.g.resources
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\Digital Fabrication\DepthBasics-WPF\obj\Debug\Microsoft.Samples.Kinect.DepthBasics.Properties.Resources.resources
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\Digital Fabrication\DepthBasics-WPF\obj\Debug\DepthBasics-WPF.csproj.GenerateResource.Cache
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\Digital Fabrication\DepthBasics-WPF\obj\Debug\DepthBasics-WPF.exe
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\Digital Fabrication\DepthBasics-WPF\obj\Debug\DepthBasics-WPF.pdb
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\Kinect_depth_basic\bin\AnyCPU\Debug\DepthBasics-WPF.exe.config
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\Kinect_depth_basic\obj\Debug\DepthBasics-WPF.exe
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\Kinect_depth_basic\obj\Debug\DepthBasics-WPF.pdb
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\Kinect_depth_basic\bin\AnyCPU\Debug\DepthBasics-WPF.exe
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\Kinect_depth_basic\bin\AnyCPU\Debug\DepthBasics-WPF.pdb
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\Kinect_depth_basic\bin\AnyCPU\Debug\Microsoft.Kinect.dll
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\Kinect_depth_basic\bin\AnyCPU\Debug\Microsoft.Kinect.xml
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\Kinect_depth_basic\obj\Debug\DepthBasics-WPF.csprojResolveAssemblyReference.cache
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\Kinect_depth_basic\obj\Debug\MainWindow.baml
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\Kinect_depth_basic\obj\Debug\MainWindow.g.cs
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\Kinect_depth_basic\obj\Debug\App.g.cs
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\Kinect_depth_basic\obj\Debug\DepthBasics-WPF_MarkupCompile.cache
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\Kinect_depth_basic\obj\Debug\DepthBasics-WPF.g.resources
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\Kinect_depth_basic\obj\Debug\Microsoft.Samples.Kinect.DepthBasics.Properties.Resources.resources
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\Kinect_depth_basic\obj\Debug\DepthBasics-WPF.csproj.GenerateResource.Cache

@@ -1,0 +1,13 @@
+c:\users\fetlab\documents\visual studio 2013\Projects\C_sharp\C_sharp\bin\Debug\C_sharp.exe.config
+c:\users\fetlab\documents\visual studio 2013\Projects\C_sharp\C_sharp\bin\Debug\C_sharp.exe
+c:\users\fetlab\documents\visual studio 2013\Projects\C_sharp\C_sharp\bin\Debug\C_sharp.pdb
+c:\users\fetlab\documents\visual studio 2013\Projects\C_sharp\C_sharp\obj\Debug\C_sharp.csprojResolveAssemblyReference.cache
+c:\users\fetlab\documents\visual studio 2013\Projects\C_sharp\C_sharp\obj\Debug\MainWindow.baml
+c:\users\fetlab\documents\visual studio 2013\Projects\C_sharp\C_sharp\obj\Debug\MainWindow.g.cs
+c:\users\fetlab\documents\visual studio 2013\Projects\C_sharp\C_sharp\obj\Debug\App.g.cs
+c:\users\fetlab\documents\visual studio 2013\Projects\C_sharp\C_sharp\obj\Debug\C_sharp_MarkupCompile.cache
+c:\users\fetlab\documents\visual studio 2013\Projects\C_sharp\C_sharp\obj\Debug\C_sharp.g.resources
+c:\users\fetlab\documents\visual studio 2013\Projects\C_sharp\C_sharp\obj\Debug\C_sharp.Properties.Resources.resources
+c:\users\fetlab\documents\visual studio 2013\Projects\C_sharp\C_sharp\obj\Debug\C_sharp.csproj.GenerateResource.Cache
+c:\users\fetlab\documents\visual studio 2013\Projects\C_sharp\C_sharp\obj\Debug\C_sharp.exe
+c:\users\fetlab\documents\visual studio 2013\Projects\C_sharp\C_sharp\obj\Debug\C_sharp.pdb
