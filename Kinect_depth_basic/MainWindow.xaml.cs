@@ -262,6 +262,8 @@ namespace Microsoft.Samples.Kinect.DepthBasics
                 // To convert to a byte, we're mapping the depth value to the byte range.
                 // Values outside the reliable depth range are mapped to 0 (black).
                 this.depthPixels[i] = (byte)(depth >= minDepth && depth <= maxDepth ? (depth / MapDepthToByte) : 0);
+                Console.WriteLine(depthPixels[i]);
+
             }
         }
 
