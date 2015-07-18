@@ -1,0 +1,48 @@
+C:\Users\fetlab\Desktop\WpfApplication6\bin\Debug\WpfApplication6.exe.config
+C:\Users\fetlab\Desktop\WpfApplication6\bin\Debug\WpfApplication6.exe
+C:\Users\fetlab\Desktop\WpfApplication6\bin\Debug\WpfApplication6.pdb
+C:\Users\fetlab\Desktop\WpfApplication6\bin\Debug\Microsoft.Kinect.dll
+C:\Users\fetlab\Desktop\WpfApplication6\bin\Debug\Microsoft.Kinect.xml
+C:\Users\fetlab\Desktop\WpfApplication6\obj\Debug\WpfApplication6.csprojResolveAssemblyReference.cache
+C:\Users\fetlab\Desktop\WpfApplication6\obj\Debug\MainWindow.baml
+C:\Users\fetlab\Desktop\WpfApplication6\obj\Debug\MainWindow.g.cs
+C:\Users\fetlab\Desktop\WpfApplication6\obj\Debug\App.g.cs
+C:\Users\fetlab\Desktop\WpfApplication6\obj\Debug\WpfApplication6_MarkupCompile.cache
+C:\Users\fetlab\Desktop\WpfApplication6\obj\Debug\WpfApplication6.g.resources
+C:\Users\fetlab\Desktop\WpfApplication6\obj\Debug\WpfApplication6.Properties.Resources.resources
+C:\Users\fetlab\Desktop\WpfApplication6\obj\Debug\WpfApplication6.csproj.GenerateResource.Cache
+C:\Users\fetlab\Desktop\WpfApplication6\obj\Debug\WpfApplication6.exe
+C:\Users\fetlab\Desktop\WpfApplication6\obj\Debug\WpfApplication6.pdb
+C:\Users\fetlab\Desktop\kinect_tool\bin\Debug\WpfApplication6.exe.config
+C:\Users\fetlab\Desktop\kinect_tool\obj\Debug\WpfApplication6.exe
+C:\Users\fetlab\Desktop\kinect_tool\obj\Debug\WpfApplication6.pdb
+C:\Users\fetlab\Desktop\kinect_tool\bin\Debug\WpfApplication6.exe
+C:\Users\fetlab\Desktop\kinect_tool\bin\Debug\WpfApplication6.pdb
+C:\Users\fetlab\Desktop\kinect_tool\bin\Debug\Microsoft.Kinect.dll
+C:\Users\fetlab\Desktop\kinect_tool\bin\Debug\Microsoft.Kinect.xml
+C:\Users\fetlab\Desktop\kinect_tool\obj\Debug\WpfApplication6.csprojResolveAssemblyReference.cache
+C:\Users\fetlab\Desktop\kinect_tool\obj\Debug\MainWindow.baml
+C:\Users\fetlab\Desktop\kinect_tool\obj\Debug\MainWindow.g.cs
+C:\Users\fetlab\Desktop\kinect_tool\obj\Debug\App.g.cs
+C:\Users\fetlab\Desktop\kinect_tool\obj\Debug\WpfApplication6_MarkupCompile.cache
+C:\Users\fetlab\Desktop\kinect_tool\obj\Debug\WpfApplication6.g.resources
+C:\Users\fetlab\Desktop\kinect_tool\obj\Debug\WpfApplication6.Properties.Resources.resources
+C:\Users\fetlab\Desktop\kinect_tool\obj\Debug\WpfApplication6.csproj.GenerateResource.Cache
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\kinect codes\kinect_tool\bin\Debug\WpfApplication6.exe.config
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\kinect codes\kinect_tool\obj\Debug\WpfApplication6.exe
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\kinect codes\kinect_tool\obj\Debug\WpfApplication6.pdb
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\kinect codes\kinect_tool_\bin\Debug\WpfApplication6.exe.config
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\kinect codes\kinect_tool_\obj\Debug\WpfApplication6.exe
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\kinect codes\kinect_tool_\obj\Debug\WpfApplication6.pdb
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\kinect codes\kinect_tool_\bin\Debug\WpfApplication6.exe
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\kinect codes\kinect_tool_\bin\Debug\WpfApplication6.pdb
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\kinect codes\kinect_tool_\bin\Debug\Microsoft.Kinect.dll
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\kinect codes\kinect_tool_\bin\Debug\Microsoft.Kinect.xml
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\kinect codes\kinect_tool_\obj\Debug\WpfApplication6.csprojResolveAssemblyReference.cache
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\kinect codes\kinect_tool_\obj\Debug\MainWindow.baml
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\kinect codes\kinect_tool_\obj\Debug\MainWindow.g.cs
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\kinect codes\kinect_tool_\obj\Debug\App.g.cs
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\kinect codes\kinect_tool_\obj\Debug\WpfApplication6_MarkupCompile.cache
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\kinect codes\kinect_tool_\obj\Debug\WpfApplication6.g.resources
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\kinect codes\kinect_tool_\obj\Debug\WpfApplication6.Properties.Resources.resources
+C:\Users\fetlab\Documents\Visual Studio 2013\Projects\kinect codes\kinect_tool_\obj\Debug\WpfApplication6.csproj.GenerateResource.Cache
