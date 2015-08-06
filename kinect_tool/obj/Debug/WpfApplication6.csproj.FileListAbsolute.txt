@@ -46,3 +46,18 @@ C:\Users\fetlab\Documents\Visual Studio 2013\Projects\kinect codes\kinect_tool_\
 C:\Users\fetlab\Documents\Visual Studio 2013\Projects\kinect codes\kinect_tool_\obj\Debug\WpfApplication6.g.resources
 C:\Users\fetlab\Documents\Visual Studio 2013\Projects\kinect codes\kinect_tool_\obj\Debug\WpfApplication6.Properties.Resources.resources
 C:\Users\fetlab\Documents\Visual Studio 2013\Projects\kinect codes\kinect_tool_\obj\Debug\WpfApplication6.csproj.GenerateResource.Cache
+C:\Users\sk1846\Documents\GitHub\kinect\kinect_tool\bin\Debug\WpfApplication6.exe.config
+C:\Users\sk1846\Documents\GitHub\kinect\kinect_tool\obj\Debug\WpfApplication6.exe
+C:\Users\sk1846\Documents\GitHub\kinect\kinect_tool\obj\Debug\WpfApplication6.pdb
+C:\Users\sk1846\Documents\GitHub\kinect\kinect_tool\bin\Debug\WpfApplication6.exe
+C:\Users\sk1846\Documents\GitHub\kinect\kinect_tool\bin\Debug\WpfApplication6.pdb
+C:\Users\sk1846\Documents\GitHub\kinect\kinect_tool\bin\Debug\Microsoft.Kinect.dll
+C:\Users\sk1846\Documents\GitHub\kinect\kinect_tool\bin\Debug\Microsoft.Kinect.xml
+C:\Users\sk1846\Documents\GitHub\kinect\kinect_tool\obj\Debug\WpfApplication6.csprojResolveAssemblyReference.cache
+C:\Users\sk1846\Documents\GitHub\kinect\kinect_tool\obj\Debug\MainWindow.baml
+C:\Users\sk1846\Documents\GitHub\kinect\kinect_tool\obj\Debug\MainWindow.g.cs
+C:\Users\sk1846\Documents\GitHub\kinect\kinect_tool\obj\Debug\App.g.cs
+C:\Users\sk1846\Documents\GitHub\kinect\kinect_tool\obj\Debug\WpfApplication6_MarkupCompile.cache
+C:\Users\sk1846\Documents\GitHub\kinect\kinect_tool\obj\Debug\WpfApplication6.g.resources
+C:\Users\sk1846\Documents\GitHub\kinect\kinect_tool\obj\Debug\WpfApplication6.Properties.Resources.resources
+C:\Users\sk1846\Documents\GitHub\kinect\kinect_tool\obj\Debug\WpfApplication6.csproj.GenerateResource.Cache

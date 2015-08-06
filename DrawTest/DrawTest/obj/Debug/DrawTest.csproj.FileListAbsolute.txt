@@ -1,0 +1,12 @@
+C:\Users\lameya17\Documents\Visual Studio 2013\Projects\DrawTest\DrawTest\bin\Debug\DrawTest.exe.config
+C:\Users\lameya17\Documents\Visual Studio 2013\Projects\DrawTest\DrawTest\obj\Debug\DrawTest.csprojResolveAssemblyReference.cache
+C:\Users\lameya17\Documents\Visual Studio 2013\Projects\DrawTest\DrawTest\obj\Debug\DrawTest.Properties.Resources.resources
+C:\Users\lameya17\Documents\Visual Studio 2013\Projects\DrawTest\DrawTest\obj\Debug\DrawTest.csproj.GenerateResource.Cache
+C:\Users\lameya17\Documents\Visual Studio 2013\Projects\DrawTest\DrawTest\bin\Debug\DrawTest.exe
+C:\Users\lameya17\Documents\Visual Studio 2013\Projects\DrawTest\DrawTest\bin\Debug\DrawTest.pdb
+C:\Users\lameya17\Documents\Visual Studio 2013\Projects\DrawTest\DrawTest\obj\Debug\DrawTest.canvas.resources
+C:\Users\lameya17\Documents\Visual Studio 2013\Projects\DrawTest\DrawTest\obj\Debug\DrawTest.exe
+C:\Users\lameya17\Documents\Visual Studio 2013\Projects\DrawTest\DrawTest\obj\Debug\DrawTest.pdb
+C:\Users\sk1846\Documents\GitHub\kinect\DrawTest\DrawTest\bin\Debug\DrawTest.exe.config
+C:\Users\sk1846\Documents\GitHub\kinect\DrawTest\DrawTest\obj\Debug\DrawTest.exe
+C:\Users\sk1846\Documents\GitHub\kinect\DrawTest\DrawTest\obj\Debug\DrawTest.pdb

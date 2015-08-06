@@ -134,7 +134,7 @@ namespace WpfApplication6
         {
             for (int j = Y_co - 20; j <= Y_co + 20; j++)
             {
-                pro_bitmap.SetPixel(i, j, System.Drawing.Color.Green);
+                pro_bitmap.SetPixel(i, j, clr);
             }
         }
         BitmapSource temp_source;
