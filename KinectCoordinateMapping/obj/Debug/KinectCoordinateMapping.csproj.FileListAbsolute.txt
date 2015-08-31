@@ -1,0 +1,33 @@
+C:\Users\sk1846\Downloads\kinect-2-coordinate-mapping-master (1)\kinect-2-coordinate-mapping-master\KinectCoordinateMapping\KinectCoordinateMapping\bin\Debug\KinectCoordinateMapping.exe.config
+C:\Users\sk1846\Downloads\kinect-2-coordinate-mapping-master (1)\kinect-2-coordinate-mapping-master\KinectCoordinateMapping\KinectCoordinateMapping\bin\Debug\KinectCoordinateMapping.exe
+C:\Users\sk1846\Downloads\kinect-2-coordinate-mapping-master (1)\kinect-2-coordinate-mapping-master\KinectCoordinateMapping\KinectCoordinateMapping\bin\Debug\KinectCoordinateMapping.pdb
+C:\Users\sk1846\Downloads\kinect-2-coordinate-mapping-master (1)\kinect-2-coordinate-mapping-master\KinectCoordinateMapping\KinectCoordinateMapping\bin\Debug\Microsoft.Kinect.dll
+C:\Users\sk1846\Downloads\kinect-2-coordinate-mapping-master (1)\kinect-2-coordinate-mapping-master\KinectCoordinateMapping\KinectCoordinateMapping\bin\Debug\Microsoft.Kinect.xml
+C:\Users\sk1846\Downloads\kinect-2-coordinate-mapping-master (1)\kinect-2-coordinate-mapping-master\KinectCoordinateMapping\KinectCoordinateMapping\obj\Debug\KinectCoordinateMapping.csprojResolveAssemblyReference.cache
+C:\Users\sk1846\Downloads\kinect-2-coordinate-mapping-master (1)\kinect-2-coordinate-mapping-master\KinectCoordinateMapping\KinectCoordinateMapping\obj\Debug\MainWindow.baml
+C:\Users\sk1846\Downloads\kinect-2-coordinate-mapping-master (1)\kinect-2-coordinate-mapping-master\KinectCoordinateMapping\KinectCoordinateMapping\obj\Debug\MainWindow.g.cs
+C:\Users\sk1846\Downloads\kinect-2-coordinate-mapping-master (1)\kinect-2-coordinate-mapping-master\KinectCoordinateMapping\KinectCoordinateMapping\obj\Debug\App.g.cs
+C:\Users\sk1846\Downloads\kinect-2-coordinate-mapping-master (1)\kinect-2-coordinate-mapping-master\KinectCoordinateMapping\KinectCoordinateMapping\obj\Debug\KinectCoordinateMapping_MarkupCompile.cache
+C:\Users\sk1846\Downloads\kinect-2-coordinate-mapping-master (1)\kinect-2-coordinate-mapping-master\KinectCoordinateMapping\KinectCoordinateMapping\obj\Debug\KinectCoordinateMapping.g.resources
+C:\Users\sk1846\Downloads\kinect-2-coordinate-mapping-master (1)\kinect-2-coordinate-mapping-master\KinectCoordinateMapping\KinectCoordinateMapping\obj\Debug\KinectCoordinateMapping.Properties.Resources.resources
+C:\Users\sk1846\Downloads\kinect-2-coordinate-mapping-master (1)\kinect-2-coordinate-mapping-master\KinectCoordinateMapping\KinectCoordinateMapping\obj\Debug\KinectCoordinateMapping.csproj.GenerateResource.Cache
+C:\Users\sk1846\Downloads\kinect-2-coordinate-mapping-master (1)\kinect-2-coordinate-mapping-master\KinectCoordinateMapping\KinectCoordinateMapping\obj\Debug\KinectCoordinateMapping.exe
+C:\Users\sk1846\Downloads\kinect-2-coordinate-mapping-master (1)\kinect-2-coordinate-mapping-master\KinectCoordinateMapping\KinectCoordinateMapping\obj\Debug\KinectCoordinateMapping.pdb
+C:\Users\sk1846\Desktop\KinectCoordinateMapping\bin\Debug\KinectCoordinateMapping.exe.config
+C:\Users\sk1846\Desktop\KinectCoordinateMapping\obj\Debug\KinectCoordinateMapping.exe
+C:\Users\sk1846\Desktop\KinectCoordinateMapping\obj\Debug\KinectCoordinateMapping.pdb
+C:\Users\sk1846\Documents\GitHub\kinect\KinectCoordinateMapping\bin\Debug\KinectCoordinateMapping.exe.config
+C:\Users\sk1846\Documents\GitHub\kinect\KinectCoordinateMapping\obj\Debug\KinectCoordinateMapping.exe
+C:\Users\sk1846\Documents\GitHub\kinect\KinectCoordinateMapping\obj\Debug\KinectCoordinateMapping.pdb
+C:\Users\sk1846\Documents\GitHub\kinect\KinectCoordinateMapping\bin\Debug\KinectCoordinateMapping.exe
+C:\Users\sk1846\Documents\GitHub\kinect\KinectCoordinateMapping\bin\Debug\KinectCoordinateMapping.pdb
+C:\Users\sk1846\Documents\GitHub\kinect\KinectCoordinateMapping\bin\Debug\Microsoft.Kinect.dll
+C:\Users\sk1846\Documents\GitHub\kinect\KinectCoordinateMapping\bin\Debug\Microsoft.Kinect.xml
+C:\Users\sk1846\Documents\GitHub\kinect\KinectCoordinateMapping\obj\Debug\KinectCoordinateMapping.csprojResolveAssemblyReference.cache
+C:\Users\sk1846\Documents\GitHub\kinect\KinectCoordinateMapping\obj\Debug\MainWindow.baml
+C:\Users\sk1846\Documents\GitHub\kinect\KinectCoordinateMapping\obj\Debug\MainWindow.g.cs
+C:\Users\sk1846\Documents\GitHub\kinect\KinectCoordinateMapping\obj\Debug\App.g.cs
+C:\Users\sk1846\Documents\GitHub\kinect\KinectCoordinateMapping\obj\Debug\KinectCoordinateMapping_MarkupCompile.cache
+C:\Users\sk1846\Documents\GitHub\kinect\KinectCoordinateMapping\obj\Debug\KinectCoordinateMapping.g.resources
+C:\Users\sk1846\Documents\GitHub\kinect\KinectCoordinateMapping\obj\Debug\KinectCoordinateMapping.Properties.Resources.resources
+C:\Users\sk1846\Documents\GitHub\kinect\KinectCoordinateMapping\obj\Debug\KinectCoordinateMapping.csproj.GenerateResource.Cache

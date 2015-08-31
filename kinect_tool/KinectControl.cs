@@ -24,10 +24,14 @@ namespace WpfApplication6
 
       // New bit - ask the sensor for the sizes rather than define constants.
       var description = this.sensor.ColorFrameSource.FrameDescription;
+      var depth_description = this.sensor.DepthFrameSource.FrameDescription;
+      
       
 
       this.frameArray = new byte[
         description.Width * description.Height * description.BytesPerPixel * 2]; // TBD on the 2
+
+   
 
       this.FrameSize = new Size(
         this.sensor.ColorFrameSource.FrameDescription.Width,

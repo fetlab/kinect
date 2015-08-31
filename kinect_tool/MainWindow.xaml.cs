@@ -24,7 +24,7 @@ namespace WpfApplication6
     }
     void OnLoaded(object sender, RoutedEventArgs e)
     {
-      this.controller = new KinectControl(this.OnFrame);
+      this.controller = new KinectControl(this.OnFrame);  // To perform kinect controlling on this frame
     }
     async Task OnFrame(byte[] frame, int width, int height)
     {
@@ -60,6 +60,7 @@ namespace WpfApplication6
         Constants.Dpi,
         PixelFormats.Bgra32,
         null);
+
 
       this.imgColour.Source = this.bitmapSource;
       Bitmap bm;

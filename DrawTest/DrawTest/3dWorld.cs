@@ -14,9 +14,24 @@ namespace DrawTest
 
         public _3dWorld(double x, double y, double z)
         {
-            x_world = x;
-            y_world = y;
-            z_world = z;
+            this.x_world = x;
+            this.y_world = y;
+            this.z_world = z;
+        }
+
+        public double getX()
+        {
+            return this.x_world;
+        }
+
+        public double getY()
+        {
+            return this.y_world;
+        }
+
+        public double getZ()
+        {
+            return this.z_world;
         }
     }
 }
