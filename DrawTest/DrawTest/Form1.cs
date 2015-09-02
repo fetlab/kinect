@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Kinect;
 using System.Xml.Linq;
-//using System.Windows.Input;
 using System.Diagnostics;
 using System.Windows;
 using System.Drawing.Imaging;
@@ -18,14 +17,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.IO;
 using System.Windows.Controls;
-
-//using System.Windows.Controls;
-//using System.Windows.Data;
-//using System.Windows.Documents;
-//using System.Windows.Media;
-//using System.Windows.Media.Imaging;
-//using System.Windows.Navigation;
-//using System.Windows.Shapes;
 
 using ReadMe;
 /* 
@@ -46,10 +37,9 @@ namespace DrawTest
     public partial class canvas : Form
 
     {
-        KinectSensor _sensor;
-        MultiSourceFrameReader _reader;
-        UInt16[] depthframe = new UInt16[512 * 424];
-        System.Windows.Controls.Image img;
+        KinectSensor _sensor;           // Kinect sensor instant
+        MultiSourceFrameReader _reader;     // Reader for multi source sensors
+        UInt16[] depthframe = new UInt16[512 * 424];    
 
        
 
@@ -88,20 +78,22 @@ namespace DrawTest
 
         private void Reader_MultiSourceFrameArrived(object sender, Microsoft.Kinect.MultiSourceFrameArrivedEventArgs e)
         {
-            var reference = e.FrameReference.AcquireFrame();
+            var reference = e.FrameReference.AcquireFrame();                  
             // Color
             using (var frame = reference.ColorFrameReference.AcquireFrame())
             {
+                // It will accept color frame also, so if Mode is color it will work on the color frame. 
                 if (frame != null)
                 {
 
                    // if (_mode == CameraMode.Color)
                    // {
-                   //       camera.Source = frame.ToBitmap();
+                   //       IMAGESORCE = frame.ToBitmap();
                   //  }
                 }
             }
             var col_frame = reference.ColorFrameReference.AcquireFrame();
+            
             CameraSpacePoint[] camerapoints = null;
             FrameDescription colorFrameDes = col_frame.FrameDescription;
             int colorWidth = colorFrameDes.Width;
@@ -114,67 +106,25 @@ namespace DrawTest
             {
                 if (frame != null)
                 {
-                        Console.Write("In the depth control.");
-                        Bitmap bmp;
-                        BitmapSource bmpsource; 
-                        bmpsource  = ToBitmap(frame);
-                        bmp =  
-                        pictureBox1.Image = bmp;
-                        //pictureBox1.Image.
-                        
-                        
-                        //camera.Source = frame.ToBitmap();
-                        //FrameDescription depth_des = frame.FrameDescription;
-                        //Bitmap depth_bitmap = null;
-                        //int depth_height = depth_des.Height;
-                        //int depth_Width = depth_des.Width;
+                        FrameDescription depth_Frame_Des = frame.FrameDescription;
+                        int depth_height = depth_Frame_Des.Height;
+                        int depth_width = depth_Frame_Des.Width;
+                        // depthdata variable which contains 512*424 values of depthdata. 
+                        UInt16[] depthdata = new UInt16[depth_height * depth_width];
+                        frame.CopyFrameDataToArray(depthdata);
 
-                        //byte[] depthpixels = new byte[depth_Width * depth_height * (PixelFormats.Bgr32.BitsPerPixel + 7) / 8];
-                        //depthpixels = new byte[depth_Width * depth_height];
-                        //UInt16[] depthdata = new UInt16[depth_Width * depth_height];
-                        //depthframe = depthdata;
-                        //frame.CopyFrameDataToArray(depthdata);
-                        //int colorindex = 0;
-                        //for (int idx = 0; idx < depthdata.Length; idx++)
+                        // If wants to display some depth values. 
+                        //for (int i = 1; i < 100; i++)
                         //{
-                        //    ushort depth = depthdata[idx];
-                        //    byte intensity = (byte)(depth >= 0 && depth <= 8000 ? depth : 0);
-                        //    depthpixels[colorindex++] = intensity;
-                        //    depthpixels[colorindex++] = intensity;
-                        //    depthpixels[colorindex++] = intensity;
+                        //    Console.WriteLine(depthdata[i]);
 
-                        //    ++colorindex;
- 
                         //}
-                   //     int stride = depth_Width *PixelFormats.Bgr32.BitsPerPixel / 8;
-                   //     System.Windows.Media.Imaging.BitmapSource bmps = null; 
-                   //// System.Windows.Media.Imaging.BitmapSource bmps = null;
-                   //     bmps = BitmapSource.Create(depth_Width, depth_height, 96, 96, PixelFormats.Bgr32, null, depthpixels, stride);
-                   // using (MemoryStream outStream = new MemoryStream())
-                   // {
-                   //     BitmapEncoder enc = new BmpBitmapEncoder();
-                   //     enc.Frames.Add(BitmapFrame.Create(bmps));
-                   //     enc.Save(outStream);
-                   //     depth_bitmap = new System.Drawing.Bitmap(outStream);
-                   // }
-                   // pictureBox1.Image = depth_bitmap;
-                        
-
-                        
-
-                        // for (int i = 1; i <= 100; i++)
-                       // {
-
-                      //    Console.Write(depthdata[i]);
-                      //      Console.Write("\n");
-                      //
-                      //  }
-
-                      //  _sensor.CoordinateMapper.MapColorFrameToCameraSpace(depthdata, camerapoints);
-                       // CameraSpacePoint testpoint = new CameraSpacePoint();
-                       // testpoint = camerapoints.ElementAt(3);
-                       // Console.WriteLine(testpoint.X);
-                        //Console.Write(abc);
+                        Console.Write("In the depth control.");
+                        BitmapSource bmpsource  = ToBitmap(frame);
+                        Bitmap bti = BitmapFromSource(bmpsource);
+                        System.Drawing.Image img = bti;
+                        pictureBox1.Image = img;
+          
                     }
                 }
           
@@ -193,28 +143,6 @@ namespace DrawTest
         }
 
 
-        //private ImageSource ToBitmap(ColorFrame frame)
-        //{
-        //    int width = frame.FrameDescription.Width;
-        //    int height = frame.FrameDescription.Height;
-
-        //    byte[] pixels = new byte[width * height * ((PixelFormats.Bgr32.BitsPerPixel + 7) / 8)];
-
-        //    if (frame.RawColorImageFormat == ColorImageFormat.Bgra)
-        //    {
-        //        frame.CopyRawFrameDataToArray(pixels);
-        //    }
-        //    else
-        //    {
-        //        frame.CopyConvertedFrameDataToArray(pixels, ColorImageFormat.Bgra);
-        //    }
-
-        //    //int stride = width * format.BitsPerPixel / 8;
-        //    int stride = width * PixelFormats.Bgra32.BitsPerPixel / 8;
-            
-        //    return BitmapSource.Create(width, height, 96, 96, PixelFormats.Bgra32, null, pixels, stride);
-        //}
-
 
         private System.Drawing.Bitmap BitmapFromSource(BitmapSource bitmapsource)
         {
@@ -229,7 +157,7 @@ namespace DrawTest
             return bitmap;
         }
 
-        private ImageSource ToBitmap(DepthFrame frame)
+        private  BitmapSource ToBitmap(DepthFrame frame)
         {
             int width = frame.FrameDescription.Width;
             int height = frame.FrameDescription.Height;
@@ -270,6 +198,7 @@ namespace DrawTest
             flag = true;
             
         }
+       
         
 
         int width;
