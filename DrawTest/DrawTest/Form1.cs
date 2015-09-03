@@ -214,12 +214,7 @@ namespace DrawTest
             y1 = e.Y;
             flag = true;
         }
-        */
-
-        // this array will have depth value for every pixel on the depth image
-  
-        
-       
+        */       
         // This occurs when draw shape button is clicked
 /**
  * Here the world co-ordinates of the points of the rectangle on the depth image.
@@ -444,15 +439,53 @@ namespace DrawTest
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void button1_Click(object sender, EventArgs e)
         {
         }
+        private System.Drawing.Point RectStartPoint;
+        private Rectangle Rect = new Rectangle();
+        private System.Drawing.Brush selectionBrush = new SolidBrush(System.Drawing.Color.FromArgb(128, 72, 145, 220));
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            // Determine the initial rectangle coordinates...
+            RectStartPoint = e.Location;
+            Invalidate();
+        }
 
-        
+        // Draw Area
+        //
+        private void pictureBox1_MouseMove_1(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left)
+                return;
+            System.Drawing.Point tempEndPoint = e.Location;
+            Rect.Location = new System.Drawing.Point(
+                Math.Min(RectStartPoint.X, tempEndPoint.X),
+                Math.Min(RectStartPoint.Y, tempEndPoint.Y));
+            Rect.Size = new System.Drawing.Size(
+                Math.Abs(RectStartPoint.X - tempEndPoint.X),
+                Math.Abs(RectStartPoint.Y - tempEndPoint.Y));
+            pictureBox1.Invalidate();
+            Console.WriteLine(Rect.Size.ToString());
+        }
+
+
+        // Draw Rectangle
+        //
+       
+        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+        {
+            // Draw the rectangle...
+            if (pictureBox1.Image != null)
+            {
+                if (Rect != null && Rect.Width > 0 && Rect.Height > 0)
+                {
+                    e.Graphics.FillRectangle(selectionBrush, Rect);
+                }
+            }
+
+        }        
     }
 }
