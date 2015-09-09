@@ -110,8 +110,8 @@ namespace DrawTest
                         int depth_height = depth_Frame_Des.Height;
                         int depth_width = depth_Frame_Des.Width;
                         // depthdata variable which contains 512*424 values of depthdata. 
-                        UInt16[] depthdata = new UInt16[depth_height * depth_width];
-                        frame.CopyFrameDataToArray(depthdata);
+                        depthframe = new UInt16[depth_height * depth_width];
+                        frame.CopyFrameDataToArray(depthframe);
 
                         // If wants to display some depth values. 
                         //for (int i = 1; i < 100; i++)
@@ -165,15 +165,15 @@ namespace DrawTest
             ushort minDepth = frame.DepthMinReliableDistance;
             ushort maxDepth = frame.DepthMaxReliableDistance;
 
-            ushort[] depthData = new ushort[width * height];
+            depthframe = new ushort[width * height];
             byte[] pixelData = new byte[width * height * (PixelFormats.Bgr32.BitsPerPixel + 7) / 8];
 
-            frame.CopyFrameDataToArray(depthData);
+            frame.CopyFrameDataToArray(depthframe);
 
             int colorIndex = 0;
-            for (int depthIndex = 0; depthIndex < depthData.Length; ++depthIndex)
+            for (int depthIndex = 0; depthIndex < depthframe.Length; ++depthIndex)
             {
-                ushort depth = depthData[depthIndex];
+                ushort depth = depthframe[depthIndex];
                 byte intensity = (byte)(depth >= minDepth && depth <= maxDepth ? depth : 0);
 
                 pixelData[colorIndex++] = intensity; // Blue
@@ -435,6 +435,7 @@ namespace DrawTest
                 {
                     Bmp.SetPixel(projector_2d[i,0], projector_2d[i,1], System.Drawing.Color.Red);
                 }
+                //Bmp.Save();
                 Console.WriteLine("jaja");
             }
         }
@@ -458,6 +459,7 @@ namespace DrawTest
         //
         private void pictureBox1_MouseMove_1(object sender, MouseEventArgs e)
         {
+            int Lx, Ly, Rx, Ry;
             if (e.Button != MouseButtons.Left)
                 return;
             System.Drawing.Point tempEndPoint = e.Location;
@@ -469,6 +471,18 @@ namespace DrawTest
                 Math.Abs(RectStartPoint.Y - tempEndPoint.Y));
             pictureBox1.Invalidate();
             Console.WriteLine(Rect.Size.ToString());
+            // X- coordinate of top lelt point
+            Lx = Rect.X;
+            Console.WriteLine(Lx.ToString());
+            // Y- coordinate of top lelt point
+            Ly = Rect.Y;
+            Console.WriteLine(Ly.ToString());
+            // X- coordinate of bottom right point
+            Rx = Lx + Rect.Width;
+            Console.WriteLine(Rx.ToString());
+            // Y- coordinate of bottom right point
+            Ry = Ly + Rect.Height;
+            Console.WriteLine(Ry.ToString());
         }
 
 

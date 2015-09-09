@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectorCameraEnsemble xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <name>Untitled</name>
+  <cameras>
+    <Camera>
+      <name>0</name>
+      <hostNameOrAddress>localhost</hostNameOrAddress>
+      <pose>
+        <ValuesByColumn>
+          <ArrayOfDouble>
+            <double>1</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+          </ArrayOfDouble>
+          <ArrayOfDouble>
+            <double>0</double>
+            <double>1</double>
+            <double>0</double>
+            <double>0</double>
+          </ArrayOfDouble>
+          <ArrayOfDouble>
+            <double>0</double>
+            <double>0</double>
+            <double>1</double>
+            <double>0</double>
+          </ArrayOfDouble>
+          <ArrayOfDouble>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>1</double>
+          </ArrayOfDouble>
+        </ValuesByColumn>
+      </pose>
+    </Camera>
+  </cameras>
+  <projectors>
+    <Projector>
+      <name>0</name>
+      <hostNameOrAddress>localhost</hostNameOrAddress>
+      <displayIndex>1</displayIndex>
+      <width>0</width>
+      <height>0</height>
+    </Projector>
+  </projectors>
+</ProjectorCameraEnsemble>
