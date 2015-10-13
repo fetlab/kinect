@@ -5,7 +5,6 @@
     <Camera>
       <name>0</name>
       <hostNameOrAddress>localhost</hostNameOrAddress>
-	<displayIndex>0</displayIndex>
       <pose>
         <ValuesByColumn>
           <ArrayOfDouble>
@@ -34,15 +33,154 @@
           </ArrayOfDouble>
         </ValuesByColumn>
       </pose>
+      <calibration>
+        <colorCameraMatrix>
+          <ValuesByColumn>
+            <ArrayOfDouble>
+              <double>1064.4676304067241</double>
+              <double>0</double>
+              <double>0</double>
+            </ArrayOfDouble>
+            <ArrayOfDouble>
+              <double>0</double>
+              <double>1064.3573020805406</double>
+              <double>0</double>
+            </ArrayOfDouble>
+            <ArrayOfDouble>
+              <double>963.65624977474124</double>
+              <double>530.80246669196413</double>
+              <double>1</double>
+            </ArrayOfDouble>
+          </ValuesByColumn>
+        </colorCameraMatrix>
+        <colorLensDistortion>
+          <ValuesByColumn>
+            <ArrayOfDouble>
+              <double>0.01168816421631238</double>
+              <double>-0.002210100969241853</double>
+            </ArrayOfDouble>
+          </ValuesByColumn>
+        </colorLensDistortion>
+        <depthCameraMatrix>
+          <ValuesByColumn>
+            <ArrayOfDouble>
+              <double>366.09138096351234</double>
+              <double>0</double>
+              <double>0</double>
+            </ArrayOfDouble>
+            <ArrayOfDouble>
+              <double>0</double>
+              <double>366.11949696912916</double>
+              <double>0</double>
+            </ArrayOfDouble>
+            <ArrayOfDouble>
+              <double>258.40131496255316</double>
+              <double>214.52516849276577</double>
+              <double>1</double>
+            </ArrayOfDouble>
+          </ValuesByColumn>
+        </depthCameraMatrix>
+        <depthLensDistortion>
+          <ValuesByColumn>
+            <ArrayOfDouble>
+              <double>0.062274299425749566</double>
+              <double>-0.16999024457266479</double>
+            </ArrayOfDouble>
+          </ValuesByColumn>
+        </depthLensDistortion>
+        <depthToColorTransform>
+          <ValuesByColumn>
+            <ArrayOfDouble>
+              <double>0.99995172023773193</double>
+              <double>-0.009768141433596611</double>
+              <double>0.0010436249431222677</double>
+              <double>0</double>
+            </ArrayOfDouble>
+            <ArrayOfDouble>
+              <double>0.0097674131393432617</double>
+              <double>0.99995201826095581</double>
+              <double>0.00070095888804644346</double>
+              <double>0</double>
+            </ArrayOfDouble>
+            <ArrayOfDouble>
+              <double>-0.0010504198726266623</double>
+              <double>-0.00069072179030627012</double>
+              <double>0.99999922513961792</double>
+              <double>0</double>
+            </ArrayOfDouble>
+            <ArrayOfDouble>
+              <double>0.052528103242431609</double>
+              <double>9.3765705889104484E-06</double>
+              <double>-2.9127074245246159E-05</double>
+              <double>1</double>
+            </ArrayOfDouble>
+          </ValuesByColumn>
+        </depthToColorTransform>
+      </calibration>
     </Camera>
   </cameras>
   <projectors>
     <Projector>
-      <name>Proj</name>
+      <name>0</name>
       <hostNameOrAddress>localhost</hostNameOrAddress>
       <displayIndex>1</displayIndex>
-      <width>0</width>
-      <height>0</height>
+      <width>1920</width>
+      <height>1080</height>
+      <cameraMatrix>
+        <ValuesByColumn>
+          <ArrayOfDouble>
+            <double>2127.5333006222509</double>
+            <double>0</double>
+            <double>0</double>
+          </ArrayOfDouble>
+          <ArrayOfDouble>
+            <double>0</double>
+            <double>2127.5333006222509</double>
+            <double>0</double>
+          </ArrayOfDouble>
+          <ArrayOfDouble>
+            <double>1011.2887347701029</double>
+            <double>-106.98753535790627</double>
+            <double>1</double>
+          </ArrayOfDouble>
+        </ValuesByColumn>
+      </cameraMatrix>
+      <lensDistortion>
+        <ValuesByColumn>
+          <ArrayOfDouble>
+            <double>0</double>
+            <double>0</double>
+          </ArrayOfDouble>
+        </ValuesByColumn>
+      </lensDistortion>
+      <pose>
+        <ValuesByColumn>
+          <ArrayOfDouble>
+            <double>0.97575211524963379</double>
+            <double>0.029831446707248688</double>
+            <double>0.21683606505393982</double>
+            <double>0</double>
+          </ArrayOfDouble>
+          <ArrayOfDouble>
+            <double>-0.12149659544229507</double>
+            <double>0.8978501558303833</double>
+            <double>0.42320644855499268</double>
+            <double>0</double>
+          </ArrayOfDouble>
+          <ArrayOfDouble>
+            <double>-0.18206143379211426</double>
+            <double>-0.43928945064544678</double>
+            <double>0.87970364093780518</double>
+            <double>0</double>
+          </ArrayOfDouble>
+          <ArrayOfDouble>
+            <double>0.20246092307604932</double>
+            <double>0.52721884794950158</double>
+            <double>-0.25689254832019603</double>
+            <double>1</double>
+          </ArrayOfDouble>
+        </ValuesByColumn>
+      </pose>
     </Projector>
   </projectors>
 </ProjectorCameraEnsemble>

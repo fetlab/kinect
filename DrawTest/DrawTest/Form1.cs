@@ -39,7 +39,8 @@ namespace DrawTest
     {
         KinectSensor _sensor;           // Kinect sensor instant
         MultiSourceFrameReader _reader;     // Reader for multi source sensors
-        UInt16[] depthframe = new UInt16[512 * 424];    
+        UInt16[] depthframe = new UInt16[512 * 424];    // array to store depth values
+        CameraSpacePoint[] camera3D = new CameraSpacePoint[512 * 424];
 
        
 
@@ -47,7 +48,9 @@ namespace DrawTest
         {
             InitializeComponent();
         }
+        
 
+      
         double f_x = 366.09138096351234;
         double f_y = 366.11949696912916;
         double c_x = 258.40131496255316;
@@ -109,22 +112,35 @@ namespace DrawTest
                         FrameDescription depth_Frame_Des = frame.FrameDescription;
                         int depth_height = depth_Frame_Des.Height;
                         int depth_width = depth_Frame_Des.Width;
+                        //DepthSpacePoint[] depthPoints = new DepthSpacePoint[512 * 424];
+                        UInt16[] depth_flipped = new UInt16[512 * 424];
                         // depthdata variable which contains 512*424 values of depthdata. 
                         depthframe = new UInt16[depth_height * depth_width];
+
+                        
+
+
+                         
                         frame.CopyFrameDataToArray(depthframe);
+                        for (int k1 = 1; k1 <= 424; k1++)
+                        {
+                            int idx = (k1 - 1) * 512 + 1;
+                            UInt16[] temp = new UInt16[512];
+                            Array.Copy(depthframe, idx, temp, 1, 512);
+                            Array.Reverse(temp);
+                            Array.Copy(temp, 1, depth_flipped, idx, 512);
+                        }
 
-                        // If wants to display some depth values. 
-                        //for (int i = 1; i < 100; i++)
-                        //{
-                        //    Console.WriteLine(depthdata[i]);
 
-                        //}
-                        Console.Write("In the depth control.");
+                     
+                        _sensor.CoordinateMapper.MapDepthFrameToCameraSpace(depth_flipped,camera3D);
+               
                         BitmapSource bmpsource  = ToBitmap(frame);
                         Bitmap bti = BitmapFromSource(bmpsource);
+                        bti.RotateFlip(RotateFlipType.Rotate180FlipY);
                         System.Drawing.Image img = bti;
                         pictureBox1.Image = img;
-          
+                        
                     }
                 }
           
@@ -222,19 +238,28 @@ namespace DrawTest
  */
         private void DrawShape_Click(object sender, EventArgs e)
         {
+            int x3 = x1;
+            int y3 = y2;
+
+            int x4 = x2;
+            int y4 = y1;
+
+
             System.Drawing.Pen p = new System.Drawing.Pen(System.Drawing.Color.Red);
             Graphics g = this.CreateGraphics();
+            flag = true;
             if (flag)
             {
                 width = Math.Abs(x1 - x2);
+                //Console.WriteLine("In X, start point \t" + x1 + " End pont is \t" + x2);                
                 height = Math.Abs(y1 - y2);
-                //Console.WriteLine(width+" "+height);
-                //Console.WriteLine(x1 + " " + x2 + " " + y1 + " " + y2);
-
-                int[] hor = new int[width + 1];
-                int horcount = 0;
-                int[] ver = new int[height + 1];
-                int vercount = 0;
+                //Console.WriteLine("In Y, start point \t" + y1 + " End pont is \t" + y2);                
+                
+                int[] hor = new int[2];//width + 1];
+                //int horcount = 0;
+                int[] ver = new int[2];//height + 1];
+                //int vercount = 0;
+                /*
                 for (int XW = (x1 < x2 ? x1 : x2); XW <= (x1 > x2 ? x1 : x2); XW++)
                 {
                     hor[horcount] = XW;
@@ -246,8 +271,17 @@ namespace DrawTest
                     ver[vercount] = YW;
                     vercount++;
                 }
+                */
+                hor[0] = x1;
+                hor[1] = x2;
+                //hor[2] = x3;
+                //hor[3] = x2;
 
-                _3dWorld[] worldCoords = new _3dWorld[(hor.Length * 2) + (ver.Length * 2)];
+                ver[0] = y1;
+                ver[1] = y2;
+                //ver[2] = y3;
+                //ver[3] = y2;
+                _3dWorld[] worldCoords = new _3dWorld[4];//(hor.Length * 2) + (ver.Length * 2)];
 
                 double x_world = 0;
                 double y_world = 0;
@@ -261,15 +295,18 @@ namespace DrawTest
                 {
                     int temp1;
                     int temp2;
-                    for (int i = 0; i < hor.Length; i++)
+                    
+                    for (int i = 0; i < 2; i++)//hor.Length; i++)
                     {
                         temp1 = ver[0];
                         temp2 = ver[ver.Length - 1];
 
                         z_world = depthframe[(temp1 * 512) + (hor[i])];
-                        Console.WriteLine(z_world);
+                        //Console.WriteLine(z_world);
                         x_world = (hor[i] - c_x) * z_world/f_x;
+                        //Console.WriteLine(x_world.ToString());
                         y_world = (temp1 - c_y) * z_world/f_y;
+                        //Console.WriteLine(y_world.ToString());
                         // z_world = relation btw x,y
                         worldCoords[count] = new _3dWorld(x_world, y_world, z_world);
                         count++;
@@ -280,12 +317,14 @@ namespace DrawTest
                         count++;
                     }
 
-                    for (int i = 0; i < ver.Length; i++)
+                    /*
+                    for (int i = 0; i < 1; i++)
                     {
                         temp1 = hor[0];
                         temp2 = hor[hor.Length - 1];
 
                         z_world = depthframe[(ver[i] * 512) + (temp1)];
+
                         x_world = (temp1 - c_x) * z_world / f_x;
                         y_world = (ver[i] - c_y) * z_world / f_y;
                         worldCoords[count] = new _3dWorld(x_world, y_world, z_world);
@@ -296,10 +335,11 @@ namespace DrawTest
                         worldCoords[count] = new _3dWorld(x_world, y_world, z_world);
                         count++;
                     }
+                     */
                 }
 
                 // Load the calibration.xml file.
-                XDocument doc = XDocument.Load("cal.xml");
+                XDocument doc = XDocument.Load("C:/Users/sk1846/Documents/GitHub/kinect/DrawTest/Cal.xml");
 
                 // projector extrinsic
 
@@ -313,7 +353,7 @@ namespace DrawTest
                 {
                     try
                     {
-                        temp[k] = Convert.ToDouble(data.Value);
+                        temp[k] = Convert.ToDouble(data.Value) ;
                         k++;
                     }
                     catch (FormatException exp)
@@ -344,7 +384,7 @@ namespace DrawTest
 
                 double[,] projector_intrinsic = new double[3, 3];
 
-                calibration_data = doc.Descendants("projectors").Descendants("Projector").Descendants("cameraMatrix").Descendants("double");
+                calibration_data = doc.Descendants("projectors").Descendants("Projector").Descendants("pose").Descendants("double");
                 temp = new double[16];
                 k = 0;
                 foreach (var data in calibration_data)
@@ -373,7 +413,7 @@ namespace DrawTest
                 {
                     for (int j = 0; j < 4; j++)
                     {
-                        Console.WriteLine(projector_pose[j, i]);
+                        //Console.WriteLine(projector_pose[j, i]);
                     }
                 }
 
@@ -410,25 +450,50 @@ namespace DrawTest
                 double c_xp = 668.580206649565;// projector_intrinsic[0, 2];
                 double c_yp = -50.8839993065837;// projector_intrinsic[1, 2];
 
-                for (int counter = 0; counter < worldCoords.Length; counter++)
+                /*
+                 * 
+                 *  temp1 = ver[0];
+                 *  temp2 = ver[ver.Length - 1];
+                 *  z_world = depthframe[(temp1 * 512) + (hor[i])];
+                 * 
+                 */
+
+                CameraSpacePoint[] my_3D = new CameraSpacePoint[4];
+                my_3D[0] = camera3D[(ver[0] * 512) + hor[0]];
+                my_3D[1] = camera3D[(ver[1] * 512) + hor[0]];
+                my_3D[2] = camera3D[(ver[0] * 512) + hor[1]];
+                my_3D[3] = camera3D[(ver[1] * 512) + hor[1]];
+
+                for (int counter = 0; counter <4 ; counter++)
                 {
-                    p_x = projector_pose[0, 0] * worldCoords[counter].getX() + projector_pose[0, 1] * worldCoords[counter].getY() + projector_pose[0, 2] * worldCoords[counter].getZ() + projector_pose[0, 3];
+                    CameraSpacePoint temp_point = my_3D[counter];
 
-                    p_y = projector_pose[1, 0] * worldCoords[counter].getX() + projector_pose[1, 1] * worldCoords[counter].getY() + projector_pose[1, 2] * worldCoords[counter].getZ() + projector_pose[1, 3];
+                    p_x = projector_pose[0, 0] * temp_point.X * 1000 + projector_pose[0, 1] * temp_point.Y * 1000 + projector_pose[0, 2] * temp_point.Z * 1000 + projector_pose[0, 3];
+                    //p_x = projector_pose[0, 0] * worldCoords[counter].getX() + projector_pose[0, 1] * worldCoords[counter].getY() + projector_pose[0, 2] * worldCoords[counter].getZ() + projector_pose[0, 3];
 
-                    p_z = projector_pose[2, 0] * worldCoords[counter].getX() + projector_pose[2, 1] * worldCoords[counter].getY() + projector_pose[2, 2] * worldCoords[counter].getZ() + projector_pose[2, 3];
+                    p_y = projector_pose[1, 0] * temp_point.X * 1000 + projector_pose[1, 1] * temp_point.Y * 1000 + projector_pose[1, 2] * temp_point.Z * 1000 + projector_pose[1, 3];
+                    //p_y = projector_pose[1, 0] * worldCoords[counter].getX() + projector_pose[1, 1] * worldCoords[counter].getY() + projector_pose[1, 2] * worldCoords[counter].getZ() + projector_pose[1, 3];
 
-                    //projector_3d[counter] = new _3dWorld(p_x, p_y, p_z);
+                    p_z = projector_pose[2, 0] * temp_point.X * 1000 + projector_pose[2, 1] * temp_point.Y * 1000 + projector_pose[2, 2] * temp_point.Z * 1000 + projector_pose[2, 3];
+                    //p_z = projector_pose[2, 0] * worldCoords[counter].getX() + projector_pose[2, 1] * worldCoords[counter].getY() + projector_pose[2, 2] * worldCoords[counter].getZ() + projector_pose[2, 3];
 
-                    projector_2d[counter, 0] = (int)(f_xp * p_x + c_xp * p_z);
-                    projector_2d[counter, 1] = (int)(f_yp * p_y + c_yp * p_z);
+                    projector_3d[counter] = new _3dWorld(p_x, p_y, p_z);
+
+                    double p_x_homo, p_y_homo, p_z_homo;
+                    
+                    p_x_homo = p_x / p_z;
+                    p_y_homo = p_y / p_z;
+                    p_z_homo = 1;
+                    
+                    projector_2d[counter, 0] = (int)(f_xp * p_x_homo + c_xp * p_z_homo);
+                    projector_2d[counter, 1] = (int)(f_yp * p_y_homo + c_yp * p_z_homo);
                 }
 
                 
 
                 g.DrawRectangle(p, x1 < x2 ? x1 : x2, y1 < y2 ? y1 : y2, width, height);
 
-                Bitmap Bmp = new Bitmap(512, 424);
+                Bitmap Bmp = new Bitmap(512,424);
                 //...
 
                 for (int i = 0; i < projector_2d.Length/2; i++)
@@ -436,6 +501,7 @@ namespace DrawTest
                     Bmp.SetPixel(projector_2d[i,0], projector_2d[i,1], System.Drawing.Color.Red);
                 }
                 //Bmp.Save();
+                Bmp.Save("img.png",ImageFormat.Png);
                 Console.WriteLine("jaja");
             }
         }
@@ -470,19 +536,18 @@ namespace DrawTest
                 Math.Abs(RectStartPoint.X - tempEndPoint.X),
                 Math.Abs(RectStartPoint.Y - tempEndPoint.Y));
             pictureBox1.Invalidate();
-            Console.WriteLine(Rect.Size.ToString());
             // X- coordinate of top lelt point
             Lx = Rect.X;
-            Console.WriteLine(Lx.ToString());
+            x1 = Lx;
             // Y- coordinate of top lelt point
             Ly = Rect.Y;
-            Console.WriteLine(Ly.ToString());
+            y1 = Ly;
             // X- coordinate of bottom right point
             Rx = Lx + Rect.Width;
-            Console.WriteLine(Rx.ToString());
+            x2 = Rx;
             // Y- coordinate of bottom right point
             Ry = Ly + Rect.Height;
-            Console.WriteLine(Ry.ToString());
+            y2 = Ry;
         }
 
 
