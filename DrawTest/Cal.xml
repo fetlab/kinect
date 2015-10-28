@@ -129,18 +129,18 @@
       <cameraMatrix>
         <ValuesByColumn>
           <ArrayOfDouble>
-            <double>2127.5333006222509</double>
+            <double>2734.1448345636245</double>
             <double>0</double>
             <double>0</double>
           </ArrayOfDouble>
           <ArrayOfDouble>
             <double>0</double>
-            <double>2127.5333006222509</double>
+            <double>2734.1448345636245</double>
             <double>0</double>
           </ArrayOfDouble>
           <ArrayOfDouble>
-            <double>1011.2887347701029</double>
-            <double>-106.98753535790627</double>
+            <double>1079.0538551149812</double>
+            <double>-184.66338516416516</double>
             <double>1</double>
           </ArrayOfDouble>
         </ValuesByColumn>
@@ -156,27 +156,27 @@
       <pose>
         <ValuesByColumn>
           <ArrayOfDouble>
-            <double>0.97575211524963379</double>
-            <double>0.029831446707248688</double>
-            <double>0.21683606505393982</double>
+            <double>0.970883846282959</double>
+            <double>-0.0017596138641238213</double>
+            <double>0.23954427242279053</double>
             <double>0</double>
           </ArrayOfDouble>
           <ArrayOfDouble>
-            <double>-0.12149659544229507</double>
-            <double>0.8978501558303833</double>
-            <double>0.42320644855499268</double>
+            <double>-0.0068287597969174385</double>
+            <double>0.999363362789154</double>
+            <double>0.035018220543861389</double>
             <double>0</double>
           </ArrayOfDouble>
           <ArrayOfDouble>
-            <double>-0.18206143379211426</double>
-            <double>-0.43928945064544678</double>
-            <double>0.87970364093780518</double>
+            <double>-0.23945337533950806</double>
+            <double>-0.035634413361549377</double>
+            <double>0.97025370597839355</double>
             <double>0</double>
           </ArrayOfDouble>
           <ArrayOfDouble>
-            <double>0.20246092307604932</double>
-            <double>0.52721884794950158</double>
-            <double>-0.25689254832019603</double>
+            <double>0.43361934425923221</double>
+            <double>-0.083701301237992257</double>
+            <double>-0.30688456190374075</double>
             <double>1</double>
           </ArrayOfDouble>
         </ValuesByColumn>

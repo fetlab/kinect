@@ -97,11 +97,11 @@ namespace DrawTest
             }
             var col_frame = reference.ColorFrameReference.AcquireFrame();
             
-            CameraSpacePoint[] camerapoints = null;
-            FrameDescription colorFrameDes = col_frame.FrameDescription;
-            int colorWidth = colorFrameDes.Width;
-            int colorHeight = colorFrameDes.Height;
-            camerapoints = new CameraSpacePoint[colorWidth * colorHeight];
+            //CameraSpacePoint[] camerapoints = null;
+            //FrameDescription colorFrameDes = col_frame.FrameDescription;
+            //int colorWidth = colorFrameDes.Width;
+            //int colorHeight = colorFrameDes.Height;
+            //camerapoints = new CameraSpacePoint[colorWidth * colorHeight];
             
 
             // Depth
@@ -122,13 +122,13 @@ namespace DrawTest
 
                          
                         frame.CopyFrameDataToArray(depthframe);
-                        for (int k1 = 1; k1 <= 424; k1++)
+                        for (int k1 = 0; k1 < 424; k1++)
                         {
-                            int idx = (k1 - 1) * 512 + 1;
+                            int idx = k1*512;
                             UInt16[] temp = new UInt16[512];
-                            Array.Copy(depthframe, idx, temp, 1, 512);
+                            Array.Copy(depthframe, idx, temp, 0, 512);
                             Array.Reverse(temp);
-                            Array.Copy(temp, 1, depth_flipped, idx, 512);
+                            Array.Copy(temp, 0, depth_flipped, idx, 512);
                         }
 
 
@@ -146,7 +146,7 @@ namespace DrawTest
           
         }
         
-        
+        /*
 
         // This part of the code stores the boundaries of the rectangle to be drawn on the image
         protected override void OnMouseDown(MouseEventArgs e)
@@ -158,7 +158,7 @@ namespace DrawTest
             //flag = true;
         }
 
-
+        */
 
         private System.Drawing.Bitmap BitmapFromSource(BitmapSource bitmapsource)
         {
@@ -205,6 +205,19 @@ namespace DrawTest
             return BitmapSource.Create(width, height, 96, 96, PixelFormats.Bgra32, null, pixelData, stride);
         }
 
+        // This occurs when draw shape button is clicked
+
+        protected override void OnMouseClick(MouseEventArgs e)
+        {
+            base.OnMouseClick(e);
+
+            x1 = e.X;
+            y1 = e.Y;
+            flag = true;
+        }
+
+
+        //This will give the coordinates of point where mouse is released. 
         protected override void OnMouseUp(MouseEventArgs e)
         {
             base.OnMouseUp(e);
@@ -220,18 +233,7 @@ namespace DrawTest
         int width;
         int height;
         
-        
-        /*
-        protected override void OnMouseClick(MouseEventArgs e)
-        {
-            base.OnMouseClick(e);
-
-            x1 = e.X;
-            y1 = e.Y;
-            flag = true;
-        }
-        */       
-        // This occurs when draw shape button is clicked
+   
 /**
  * Here the world co-ordinates of the points of the rectangle on the depth image.
  * With the given 
@@ -445,10 +447,10 @@ namespace DrawTest
             <double>-50.8839993065837</double>
             <double>1</double>
 */
-                double f_xp = 1403.0505051879177;// projector_intrinsic[0, 0];
-                double f_yp = 1403.0505051879177;// projector_intrinsic[1, 1];
-                double c_xp = 668.580206649565;// projector_intrinsic[0, 2];
-                double c_yp = -50.8839993065837;// projector_intrinsic[1, 2];
+                double f_xp = 2734.1448345636245;// projector_intrinsic[0, 0];
+                double f_yp = 2734.1448345636245;// projector_intrinsic[1, 1];
+                double c_xp = 1240;//1013.8355612110823;// projector_intrinsic[0, 2];
+                double c_yp = 600;//-184.66338516416516;//-93.840102011746026;// projector_intrinsic[1, 2];
 
                 /*
                  * 
