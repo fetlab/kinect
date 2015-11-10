@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,15 +17,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.IO;
 using System.Windows.Controls;
-
 using ReadMe;
 /* 
- * Intrinsic matrix for the depth camera
- * 
  * (The values for intrinsic matrices for depth camera and projector have been hardcoded because
  *  they never change)
  * 
- * Values from calibration.xml file
+ * Depth camera intrinsic matrix, values are taken from calibration.xml file
  * 
  * | fx  0   c_x |
  * | 0   fy  c_y |
@@ -39,31 +36,29 @@ namespace DrawTest
     {
         KinectSensor _sensor;           // Kinect sensor instant
         MultiSourceFrameReader _reader;     // Reader for multi source sensors
-        UInt16[] depthframe = new UInt16[512 * 424];    // array to store depth values
+        UInt16[] depthFrameData = new UInt16[512 * 424];    // array to store depth values
         CameraSpacePoint[] camera3D = new CameraSpacePoint[512 * 424];
 
-       
-
+      
         public canvas()
         {
             InitializeComponent();
         }
         
+    // intrinsic matrices for depth camera have been hardcoded because they never change. 
 
-      
         double f_x = 366.09138096351234;
         double f_y = 366.11949696912916;
         double c_x = 258.40131496255316;
         double c_y = 214.52516849276577;
         
-
+    //(x1,y1), (x2,y2),(x3,y3),(x4,y4) are four vertices of rectangle, which is drawn to select any object. 
         int x1 = 0;
         int x2 = 0;
         int y1 = 0;
         int y2 = 0;
         //int count = 0;
         bool flag = false;
-
 
         private void canvas_Load(object sender, EventArgs e)
         {
@@ -85,26 +80,16 @@ namespace DrawTest
             // Color
             using (var frame = reference.ColorFrameReference.AcquireFrame())
             {
-                // It will accept color frame also, so if Mode is color it will work on the color frame. 
                 if (frame != null)
                 {
-
-                   // if (_mode == CameraMode.Color)
-                   // {
-                   //       IMAGESORCE = frame.ToBitmap();
-                  //  }
+                    
+                //Perform anything with color frame data.
+                
                 }
             }
+            //Save color frame for later use. 
             var col_frame = reference.ColorFrameReference.AcquireFrame();
-            
-            //CameraSpacePoint[] camerapoints = null;
-            //FrameDescription colorFrameDes = col_frame.FrameDescription;
-            //int colorWidth = colorFrameDes.Width;
-            //int colorHeight = colorFrameDes.Height;
-            //camerapoints = new CameraSpacePoint[colorWidth * colorHeight];
-            
-
-            // Depth
+            // Work with depth data.
             using (var frame = reference.DepthFrameReference.AcquireFrame())
             {
                 if (frame != null)
@@ -112,15 +97,12 @@ namespace DrawTest
                         FrameDescription depth_Frame_Des = frame.FrameDescription;
                         int depth_height = depth_Frame_Des.Height;
                         int depth_width = depth_Frame_Des.Width;
-                        //DepthSpacePoint[] depthPoints = new DepthSpacePoint[512 * 424];
                         UInt16[] depth_flipped = new UInt16[512 * 424];
-                        // depthdata variable which contains 512*424 values of depthdata. 
                         depthframe = new UInt16[depth_height * depth_width];
-
-                        
-
-
-                         
+                        /*
+                        This for loop is flipping the depth image with respect to vertical axis because kinect by default 
+                        gives mirrored image. 
+                        */
                         frame.CopyFrameDataToArray(depthframe);
                         for (int k1 = 0; k1 < 424; k1++)
                         {
@@ -130,13 +112,15 @@ namespace DrawTest
                             Array.Reverse(temp);
                             Array.Copy(temp, 0, depth_flipped, idx, 512);
                         }
-
-
-                     
+                        /*
+                        This coordinate mapper maps every depth data from depth image to 3D point(x,y,z)
+                        which represents corresponding point in 3D view of depth camera.
+                        */
                         _sensor.CoordinateMapper.MapDepthFrameToCameraSpace(depth_flipped,camera3D);
                
                         BitmapSource bmpsource  = ToBitmap(frame);
                         Bitmap bti = BitmapFromSource(bmpsource);
+                        //flipping the image for display also. 
                         bti.RotateFlip(RotateFlipType.Rotate180FlipY);
                         System.Drawing.Image img = bti;
                         pictureBox1.Image = img;
@@ -146,20 +130,8 @@ namespace DrawTest
           
         }
         
-        /*
-
-        // This part of the code stores the boundaries of the rectangle to be drawn on the image
-        protected override void OnMouseDown(MouseEventArgs e)
-        {
-            base.OnMouseDown(e);
-            x1 = e.X;
-            y1 = e.Y;
-
-            //flag = true;
-        }
-
-        */
-
+        
+        // Function to create Bitmap from Bitmapsource.
         private System.Drawing.Bitmap BitmapFromSource(BitmapSource bitmapsource)
         {
             System.Drawing.Bitmap bitmap;
@@ -172,7 +144,7 @@ namespace DrawTest
             }
             return bitmap;
         }
-
+        //Function to convert a frame into Bitmap. 
         private  BitmapSource ToBitmap(DepthFrame frame)
         {
             int width = frame.FrameDescription.Width;
@@ -233,11 +205,7 @@ namespace DrawTest
         int width;
         int height;
         
-   
-/**
- * Here the world co-ordinates of the points of the rectangle on the depth image.
- * With the given 
- */
+        //Get all the four points. 
         private void DrawShape_Click(object sender, EventArgs e)
         {
             int x3 = x1;
@@ -447,6 +415,7 @@ namespace DrawTest
             <double>-50.8839993065837</double>
             <double>1</double>
 */
+                //Hardcoding the projector intrinsic matrix vlaues. 
                 double f_xp = 2734.1448345636245;// projector_intrinsic[0, 0];
                 double f_yp = 2734.1448345636245;// projector_intrinsic[1, 1];
                 double c_xp = 1240;//1013.8355612110823;// projector_intrinsic[0, 2];
@@ -465,7 +434,8 @@ namespace DrawTest
                 my_3D[1] = camera3D[(ver[1] * 512) + hor[0]];
                 my_3D[2] = camera3D[(ver[0] * 512) + hor[1]];
                 my_3D[3] = camera3D[(ver[1] * 512) + hor[1]];
-
+                //This for loop maps four points from depth camera 3D view to 3D view of projector.
+                //It uses pose matrix of projector optained by the calibration process. 
                 for (int counter = 0; counter <4 ; counter++)
                 {
                     CameraSpacePoint temp_point = my_3D[counter];
@@ -482,7 +452,7 @@ namespace DrawTest
                     projector_3d[counter] = new _3dWorld(p_x, p_y, p_z);
 
                     double p_x_homo, p_y_homo, p_z_homo;
-                    
+                    //Homogenize the values. 
                     p_x_homo = p_x / p_z;
                     p_y_homo = p_y / p_z;
                     p_z_homo = 1;
@@ -491,13 +461,9 @@ namespace DrawTest
                     projector_2d[counter, 1] = (int)(f_yp * p_y_homo + c_yp * p_z_homo);
                 }
 
-                
-
+                // Generating an image in the projector 2D view with the corresponding selected region in deptgh image. 
                 g.DrawRectangle(p, x1 < x2 ? x1 : x2, y1 < y2 ? y1 : y2, width, height);
-
                 Bitmap Bmp = new Bitmap(512,424);
-                //...
-
                 for (int i = 0; i < projector_2d.Length/2; i++)
                 {
                     Bmp.SetPixel(projector_2d[i,0], projector_2d[i,1], System.Drawing.Color.Red);
@@ -508,8 +474,7 @@ namespace DrawTest
             }
         }
 
-       
-
+      
         private void button1_Click(object sender, EventArgs e)
         {
         }
