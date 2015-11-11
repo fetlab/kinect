@@ -18,6 +18,8 @@ using System.Windows.Media.Imaging;
 using System.IO;
 using System.Windows.Controls;
 using ReadMe;
+using SharpDX;
+
 /* 
  * (The values for intrinsic matrices for depth camera and projector have been hardcoded because
  *  they never change)
@@ -36,7 +38,7 @@ namespace DrawTest
     {
         KinectSensor _sensor;           // Kinect sensor instant
         MultiSourceFrameReader _reader;     // Reader for multi source sensors
-        UInt16[] depthFrameData = new UInt16[512 * 424];    // array to store depth values
+        UInt16[] depthframe = new UInt16[512 * 424];    // array to store depth values
         CameraSpacePoint[] camera3D = new CameraSpacePoint[512 * 424];
 
       
@@ -98,7 +100,7 @@ namespace DrawTest
                         int depth_height = depth_Frame_Des.Height;
                         int depth_width = depth_Frame_Des.Width;
                         UInt16[] depth_flipped = new UInt16[512 * 424];
-                        depthframe = new UInt16[depth_height * depth_width];
+                        UInt16[] depthframe = new UInt16[depth_height * depth_width];
                         /*
                         This for loop is flipping the depth image with respect to vertical axis because kinect by default 
                         gives mirrored image. 
@@ -153,7 +155,7 @@ namespace DrawTest
             ushort minDepth = frame.DepthMinReliableDistance;
             ushort maxDepth = frame.DepthMaxReliableDistance;
 
-            depthframe = new ushort[width * height];
+            UInt16[] depthframe = new ushort[width * height];
             byte[] pixelData = new byte[width * height * (PixelFormats.Bgr32.BitsPerPixel + 7) / 8];
 
             frame.CopyFrameDataToArray(depthframe);
@@ -177,31 +179,6 @@ namespace DrawTest
             return BitmapSource.Create(width, height, 96, 96, PixelFormats.Bgra32, null, pixelData, stride);
         }
 
-        // This occurs when draw shape button is clicked
-
-        protected override void OnMouseClick(MouseEventArgs e)
-        {
-            base.OnMouseClick(e);
-
-            x1 = e.X;
-            y1 = e.Y;
-            flag = true;
-        }
-
-
-        //This will give the coordinates of point where mouse is released. 
-        protected override void OnMouseUp(MouseEventArgs e)
-        {
-            base.OnMouseUp(e);
-
-            x2 = e.X;
-            y2 = e.Y;
-            flag = true;
-            
-        }
-       
-        
-
         int width;
         int height;
         
@@ -214,7 +191,7 @@ namespace DrawTest
             int x4 = x2;
             int y4 = y1;
 
-
+            
             System.Drawing.Pen p = new System.Drawing.Pen(System.Drawing.Color.Red);
             Graphics g = this.CreateGraphics();
             flag = true;
@@ -228,20 +205,7 @@ namespace DrawTest
                 int[] hor = new int[2];//width + 1];
                 //int horcount = 0;
                 int[] ver = new int[2];//height + 1];
-                //int vercount = 0;
-                /*
-                for (int XW = (x1 < x2 ? x1 : x2); XW <= (x1 > x2 ? x1 : x2); XW++)
-                {
-                    hor[horcount] = XW;
-                    horcount++;
-                }
-
-                for (int YW = (y1 < y2 ? y1 : y2); YW <= (y1 > y2 ? y1 : y2); YW++)
-                {
-                    ver[vercount] = YW;
-                    vercount++;
-                }
-                */
+          
                 hor[0] = x1;
                 hor[1] = x2;
                 //hor[2] = x3;
@@ -260,7 +224,7 @@ namespace DrawTest
                 // z_world is the depth
 
                 int count = 0;
-
+             
                 while(count < worldCoords.Length)
                 {
                     int temp1;
@@ -286,32 +250,14 @@ namespace DrawTest
                         worldCoords[count] = new _3dWorld(x_world, y_world, z_world);
                         count++;
                     }
-
-                    /*
-                    for (int i = 0; i < 1; i++)
-                    {
-                        temp1 = hor[0];
-                        temp2 = hor[hor.Length - 1];
-
-                        z_world = depthframe[(ver[i] * 512) + (temp1)];
-
-                        x_world = (temp1 - c_x) * z_world / f_x;
-                        y_world = (ver[i] - c_y) * z_world / f_y;
-                        worldCoords[count] = new _3dWorld(x_world, y_world, z_world);
-                        count++;
-
-                        z_world = depthframe[(ver[i] * 512) + (temp2)];
-                        x_world = (temp2 - c_x) * z_world / f_x;
-                        worldCoords[count] = new _3dWorld(x_world, y_world, z_world);
-                        count++;
-                    }
-                     */
+                
                 }
 
                 // Load the calibration.xml file.
                 XDocument doc = XDocument.Load("C:/Users/sk1846/Documents/GitHub/kinect/DrawTest/Cal.xml");
 
                 // projector extrinsic
+
 
                 double[,] projector_pose = new double[4,4];
            
@@ -379,13 +325,26 @@ namespace DrawTest
                         k++;
                     }
                 }
-                for (int i = 0; i < 4; i++)
-                {
-                    for (int j = 0; j < 4; j++)
-                    {
-                        //Console.WriteLine(projector_pose[j, i]);
-                    }
-                }
+
+                
+                 SharpDX.Matrix view1 = new SharpDX.Matrix();
+                 for (int i = 0; i < 4;i++ )
+                 {
+                     for(int j=0;j<4;j++)
+                     {
+                         view1[i, j] = (float)projector_pose[i, j];
+                     }
+                 }
+                 view1.Invert();
+                 view1.Transpose();
+
+                     for (int i = 0; i < 4; i++)
+                     {
+                         for (int j = 0; j < 4; j++)
+                         {
+                             //Console.WriteLine(projector_pose[j, i]);
+                         }
+                     }
 
 
                 // projector 3d points 
@@ -416,10 +375,10 @@ namespace DrawTest
             <double>1</double>
 */
                 //Hardcoding the projector intrinsic matrix vlaues. 
-                double f_xp = 2734.1448345636245;// projector_intrinsic[0, 0];
-                double f_yp = 2734.1448345636245;// projector_intrinsic[1, 1];
-                double c_xp = 1240;//1013.8355612110823;// projector_intrinsic[0, 2];
-                double c_yp = 600;//-184.66338516416516;//-93.840102011746026;// projector_intrinsic[1, 2];
+                double f_xp = 1974.87157373946;// projector_intrinsic[0, 0];
+                double f_yp = 1974.87157373946;// projector_intrinsic[1, 1];
+                double c_xp = 1031.8680099552494;//1013.8355612110823;// projector_intrinsic[0, 2];
+                double c_yp = -106.89190621825618;//-184.66338516416516;//-93.840102011746026;// projector_intrinsic[1, 2];
 
                 /*
                  * 
@@ -440,13 +399,13 @@ namespace DrawTest
                 {
                     CameraSpacePoint temp_point = my_3D[counter];
 
-                    p_x = projector_pose[0, 0] * temp_point.X * 1000 + projector_pose[0, 1] * temp_point.Y * 1000 + projector_pose[0, 2] * temp_point.Z * 1000 + projector_pose[0, 3];
+                    p_x = view1[0, 0] * temp_point.X * 1000 + view1[0, 1] * temp_point.Y * 1000 + view1[0, 2] * temp_point.Z * 1000 + view1[0, 3];
                     //p_x = projector_pose[0, 0] * worldCoords[counter].getX() + projector_pose[0, 1] * worldCoords[counter].getY() + projector_pose[0, 2] * worldCoords[counter].getZ() + projector_pose[0, 3];
 
-                    p_y = projector_pose[1, 0] * temp_point.X * 1000 + projector_pose[1, 1] * temp_point.Y * 1000 + projector_pose[1, 2] * temp_point.Z * 1000 + projector_pose[1, 3];
+                    p_y = view1[1, 0] * temp_point.X * 1000 + view1[1, 1] * temp_point.Y * 1000 + view1[1, 2] * temp_point.Z * 1000 + view1[1, 3];
                     //p_y = projector_pose[1, 0] * worldCoords[counter].getX() + projector_pose[1, 1] * worldCoords[counter].getY() + projector_pose[1, 2] * worldCoords[counter].getZ() + projector_pose[1, 3];
 
-                    p_z = projector_pose[2, 0] * temp_point.X * 1000 + projector_pose[2, 1] * temp_point.Y * 1000 + projector_pose[2, 2] * temp_point.Z * 1000 + projector_pose[2, 3];
+                    p_z = view1[2, 0] * temp_point.X * 1000 + view1[2, 1] * temp_point.Y * 1000 + view1[2, 2] * temp_point.Z * 1000 + view1[2, 3];
                     //p_z = projector_pose[2, 0] * worldCoords[counter].getX() + projector_pose[2, 1] * worldCoords[counter].getY() + projector_pose[2, 2] * worldCoords[counter].getZ() + projector_pose[2, 3];
 
                     projector_3d[counter] = new _3dWorld(p_x, p_y, p_z);
@@ -474,12 +433,8 @@ namespace DrawTest
             }
         }
 
-      
-        private void button1_Click(object sender, EventArgs e)
-        {
-        }
         private System.Drawing.Point RectStartPoint;
-        private Rectangle Rect = new Rectangle();
+        private System.Drawing.Rectangle Rect = new System.Drawing.Rectangle();
         private System.Drawing.Brush selectionBrush = new SolidBrush(System.Drawing.Color.FromArgb(128, 72, 145, 220));
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {

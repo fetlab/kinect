@@ -27,3 +27,8 @@ C:\Users\sk1846\Documents\GitHub\kinect\DrawTest\DrawTest\obj\Debug\DrawTest.csp
 C:\Users\sk1846\Documents\GitHub\kinect\DrawTest\DrawTest\obj\Debug\DrawTest.canvas.resources
 C:\Users\sk1846\Documents\GitHub\kinect\DrawTest\DrawTest\obj\Debug\DrawTest.Properties.Resources.resources
 C:\Users\sk1846\Documents\GitHub\kinect\DrawTest\DrawTest\obj\Debug\DrawTest.csproj.GenerateResource.Cache
+C:\Users\sk1846\Documents\GitHub\kinect\DrawTest\DrawTest\obj\Debug\Interop.DXTMSFTLib.dll
+C:\Users\sk1846\Documents\GitHub\kinect\DrawTest\DrawTest\obj\Debug\Interop.DXTRANSLib.dll
+C:\Users\sk1846\Documents\GitHub\kinect\DrawTest\DrawTest\obj\Debug\DrawTest.csproj.ResolveComReference.cache
+C:\Users\sk1846\Documents\GitHub\kinect\DrawTest\DrawTest\bin\Debug\SharpDX.dll
+C:\Users\sk1846\Documents\GitHub\kinect\DrawTest\DrawTest\bin\Debug\SharpDX.xml
