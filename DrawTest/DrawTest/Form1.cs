@@ -41,20 +41,32 @@ namespace DrawTest
         UInt16[] depthframe = new UInt16[512 * 424];    // array to store depth values
         CameraSpacePoint[] camera3D = new CameraSpacePoint[512 * 424];
 
-      
+        //Initialize the canvas window(UI).
         public canvas()
         {
             InitializeComponent();
         }
-        
-    // intrinsic matrices for depth camera have been hardcoded because they never change. 
 
+
+        // Load the calibration.xml file.
+        XDocument doc = XDocument.Load("C:/Users/sk1846/Documents/GitHub/kinect/DrawTest/Cal.xml");
+
+        
+    /* intrinsic matrices for depth camera have been hardcoded because they never change.
+     * 
+     * Depth camera intrinsic matrix, values are taken from calibration.xml file
+     * 
+     * | fx  0   c_x |        fx,fy are focal lengths in pixels. 
+     * | 0   fy  c_y |        c_x,c_y are principle point coordinates.
+     * | 0   0    1  |
+    */
+    
         double f_x = 366.09138096351234;
         double f_y = 366.11949696912916;
         double c_x = 258.40131496255316;
         double c_y = 214.52516849276577;
         
-    //(x1,y1), (x2,y2),(x3,y3),(x4,y4) are four vertices of rectangle, which is drawn to select any object. 
+        //(x1,y1), (x2,y2),(x3,y3),(x4,y4) are four vertices of rectangle, which is drawn to select any object. 
         int x1 = 0;
         int x2 = 0;
         int y1 = 0;
@@ -62,6 +74,7 @@ namespace DrawTest
         //int count = 0;
         bool flag = false;
 
+        //Open the kinect sensor.
         private void canvas_Load(object sender, EventArgs e)
         {
 
@@ -76,10 +89,13 @@ namespace DrawTest
 
         }
 
+
+        //Multisource frame reader. 
         private void Reader_MultiSourceFrameArrived(object sender, Microsoft.Kinect.MultiSourceFrameArrivedEventArgs e)
         {
             var reference = e.FrameReference.AcquireFrame();                  
             // Color
+            /*  Color frame to be used later use. 
             using (var frame = reference.ColorFrameReference.AcquireFrame())
             {
                 if (frame != null)
@@ -91,7 +107,11 @@ namespace DrawTest
             }
             //Save color frame for later use. 
             var col_frame = reference.ColorFrameReference.AcquireFrame();
-            // Work with depth data.
+            
+             */
+             // Work with depth data.
+
+
             using (var frame = reference.DepthFrameReference.AcquireFrame())
             {
                 if (frame != null)
@@ -252,9 +272,6 @@ namespace DrawTest
                     }
                 
                 }
-
-                // Load the calibration.xml file.
-                XDocument doc = XDocument.Load("C:/Users/sk1846/Documents/GitHub/kinect/DrawTest/Cal.xml");
 
                 // projector extrinsic
 
