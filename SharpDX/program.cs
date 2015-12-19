@@ -59,21 +59,26 @@ namespace MiniTri
             var output1 = output.QueryInterface<Output1>();
 
 
-            //Define the co-ordinates of working region in illustrator or MS-paint. 
-            // (x1,y1) is top left point and (x2,y2) is bottom right point. 
-            int x1 = 120, y1 = 120;
-            int x2 = 600, y2 = 700;
-
-            //Get the height and width for the cropped window. 
-
-            int croppedHeight = Math.Abs(y1 - y2);
-            int croppedWidth = Math.Abs(x2 - x1); 
-
 
 
             // Width/Height of desktop to capture
             int width = ((Rectangle)output.Description.DesktopBounds).Width;
             int height = ((Rectangle)output.Description.DesktopBounds).Height;
+
+
+            //Define the co-ordinates of working region in illustrator or MS-paint. 
+            // (x1,y1) is top left point and (x2,y2) is bottom right point. 
+
+           
+            int x1 = width/2, y1 = 1;
+            int x2 = width, y2 = height;
+
+            //Get the height and width for the cropped window. 
+
+            int croppedHeight = Math.Abs(y1 - y2);
+            int croppedWidth = Math.Abs(x2 - x1);
+
+
 
             // Create Staging texture CPU-accessible
             var textureDesc = new Texture2DDescription
@@ -121,7 +126,7 @@ namespace MiniTri
 
                         var croppedBitmap = new System.Drawing.Bitmap(croppedWidth, croppedHeight, PixelFormat.Format32bppArgb);
                         var resizeBitmap = new System.Drawing.Bitmap(1920,1080, PixelFormat.Format32bppArgb);
-                        var croppedBoundsRect = new System.Drawing.Rectangle(0, 0, croppedWidth, croppedHeight);
+                        var croppedBoundsRect = new System.Drawing.Rectangle(0,0, croppedWidth, croppedHeight);
 
 
                         // Copy pixels from screen capture Texture to GDI bitmap
@@ -133,6 +138,15 @@ namespace MiniTri
                         //var destPtr = mapDest.Scan0;
 
                         var croppedDestPtr = croppedMapDest.Scan0;
+
+                        // Get the number of bytes per data entry
+                        int bpd = (mapSource.RowPitch / width);
+
+                        // Get the index of first data of cropped image in pointer. 
+                        int idx = bpd*(y1*width+x1);
+
+                        //Set offset to pointer 
+                        sourcePtr = IntPtr.Add(sourcePtr, idx);
 
                         for (int y = y1; y < y2; y++)
                         {
